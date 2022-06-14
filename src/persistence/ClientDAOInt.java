@@ -1,10 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+//CRUD Objects
 package persistence;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.List;
+import model.Client;
 
-public class ClientDAOInt {
+public interface ClientDAOInt {
+    public List<Client> listClients() throws FileNotFoundException, IOException, ClassNotFoundException;
+    public String addClient(Client client) throws FileNotFoundException, IOException;
+    public void deleteClient(Client client);
+    public void updateClient(Client client);
     
 }
