@@ -1,9 +1,6 @@
 
 package model;
 
-import java.io.Serializable;
-
-
 public class Client extends Person {
     private boolean state;
     private String type;

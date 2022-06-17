@@ -39,15 +39,24 @@ public class ClientDAOImp implements ClientDAOInt {
     @Override
     public String addClient(Client client) throws FileNotFoundException, IOException {
         String msg="";
+        //Se valida que el objeto que se desea guardar no sea null o que ya
+        //exista en el archvo de datos.
         if (client != null && !validateIdClient(client)) {
             try {
                 FileOutputStream fileOutput = null;
+                //Se crea el objeto FileOutputStream con el atributo true para 
+                //habilitar que se agreguen datos al archivo
                 fileOutput = new FileOutputStream(file, true);
+                //Si el archivo no existe, inicializa el archivo
                 if (file.length() == 0) {
                     ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);
                     objectOutput.writeObject(client);
                     objectOutput.close();
                 } 
+                //Si el archivo ya existe, agrega el objeto client usando un objeto
+                //de una clase que extiende ObjectOutputStrema para evitar un error
+                //en la inicialización del objeto para gestionar el almacenamiento de
+                //objeto al archivo de salida
                 else {
                     MyObjectOutputStream myobjectOutput = null;
                     myobjectOutput = new MyObjectOutputStream(fileOutput);
@@ -80,7 +89,7 @@ public class ClientDAOImp implements ClientDAOInt {
                 while (flowIn.available()!=0) {
                     c = (Client) reader.readObject();
                     //Compara el id de cada registros con el que se desea borrar
-                    //Si son diferentes, escribe el regitrro en el archivo temporal
+                    //Si son diferentes, escribe el registro en el archivo temporal
                     if (c.getId().equals(client.getId())==false) {
                         writer.writeObject(c);
                     }
@@ -130,10 +139,11 @@ public class ClientDAOImp implements ClientDAOInt {
             fileIn.delete();
             fileTmp.renameTo(fileIn);
         }        
-
     }
     
-    //Recorre los registros guardados para buscar ul que se quiere guardar
+    //Recorre los registros guardados para buscar un cliente que se quiere 
+    //guardar. Retorna true si el ciente existe en elarchivo, de lo contrario
+    //retorna false
     public boolean validateIdClient(Client client){
         boolean status = false;
         try {
