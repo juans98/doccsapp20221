@@ -117,7 +117,7 @@ public class ClientList extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(clientDeleteBtn)
-                .addGap(95, 95, 95)
+                .addGap(104, 104, 104)
                 .addComponent(clientUpdateBtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(clientCloseBtn)
@@ -160,9 +160,11 @@ public class ClientList extends javax.swing.JFrame {
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(12, 12, 12))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE))
+                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 492, Short.MAX_VALUE)
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -213,7 +215,7 @@ public class ClientList extends javax.swing.JFrame {
     private void clientDeleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clientDeleteBtnActionPerformed
         int index = clientTbl.getSelectedRow();
         Client client = listClient.get(index);
-        JOptionPane.showMessageDialog(null, client.getId());
+        //JOptionPane.showMessageDialog(null, client.getId());
         ClientDAOImp clientDAOImp = new ClientDAOImp();
         int rta = JOptionPane.showConfirmDialog(null, "Do you want to delete the record?",
                 "Remove Client Registry", JOptionPane.OK_CANCEL_OPTION,

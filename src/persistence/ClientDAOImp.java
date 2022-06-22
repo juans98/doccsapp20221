@@ -104,7 +104,6 @@ public class ClientDAOImp implements ClientDAOInt {
             fileIn.delete();
             fileTmp.renameTo(fileIn);
         }        
-
     }
 
     @Override
